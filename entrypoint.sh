@@ -12,7 +12,7 @@ for PY_VER in "${arrPY_VERSIONS[@]}"; do
     if [ ! -z "$2" ]; then
         /opt/python/${PY_VER}/bin/pip install ${BUILD_REQUIREMENTS} || { echo "Installing requirements failed."; exit 1; }
     fi
-    /opt/python/${PY_VER}/bin/pip wheel /github/workspace/ -w /github/workspace/wheelhouse/ || { echo "Building wheels failed."; exit 1; }
+    /opt/python/${PY_VER}/bin/pip wheel /github/workspace/ -w /github/workspace/wheelhouse/ --no-deps || { echo "Building wheels failed."; exit 1; }
 done
 
 # Bundle external shared libraries into the wheels
